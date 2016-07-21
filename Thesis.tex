@@ -1,0 +1,172 @@
+% Этот шаблон документа разработан в 2014 году 
+
+\documentclass[a4paper,14pt]{article}
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в фомулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Немуреация формул слева
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%%% Теоремы
+\theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{proposition}[theorem]{Утверждение}
+ 
+\theoremstyle{definition} % "Определение"
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+ 
+\theoremstyle{remark} % "Примечание"
+\newtheorem*{nonum}{Решение}
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+	\geometry{top=20mm}
+	\geometry{bottom=20mm}
+	\geometry{left=30mm}
+	\geometry{right=15mm}
+ %
+\usepackage{fancyhdr} % Колонтитулы
+ 	\pagestyle{fancy}
+ 	\renewcommand{\headrulewidth}{1pt}  % Толщина линейки, отчеркивающей верхний колонтитул
+ 	%\lfoot{Нижний левый}
+ 	%\rfoot{Нижний правый}
+ 	\rhead{\arabic{page}}
+ 	%\chead{Верхний в центре}
+ 	%\lhead{\includegraphics[width=15mm]{MADness}}
+ 	\cfoot{} % По умолчанию здесь номер страницы
+
+\usepackage{setspace} % Интерлиньяж
+%\onehalfspacing % Интерлиньяж 1.5
+%\doublespacing % Интерлиньяж 2
+%\singlespacing % Интерлиньяж 1
+
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+
+\usepackage{soulutf8} % Модификаторы начертания
+
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\hypersetup{				% Гиперссылки
+    unicode=true,           % русские буквы в раздела PDF
+    pdftitle={Заголовок},   % Заголовок
+    pdfauthor={Автор},      % Автор
+    pdfsubject={Тема},      % Тема
+    pdfcreator={Создатель}, % Создатель
+    pdfproducer={Производитель}, % Производитель
+    pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
+    colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
+    linkcolor=red,          % внутренние ссылки
+    citecolor=green,        % на библиографию
+    filecolor=magenta,      % на файлы
+    urlcolor=cyan           % на URL
+}
+
+%\renewcommand{\familydefault}{\sfdefault} % Начертание шрифта
+
+\usepackage{multicol} % Несколько колонок
+
+\author{dem[]n}
+\title{Шаблон документа}
+\date{\today}
+
+\begin{document} % конец преамбулы, начало документа
+
+\thispagestyle{empty} %Обеспечивает отсутствие колонтитулов на этой странице
+
+%\begin{tabulary}{\textwidth}{J|C}
+%\huge{\textbf{БИБЛИОТЕЧКА dem[]n'a}} & %\includegraphics[width=0.6\linewidth]{MADness} \\
+%\end{tabulary}
+
+\begin{center}
+
+\textbf{ИНСТИТУТ НИЗКИХ И ПРИЗЕМЛЕННЫХ ИССЛЕДОВАНИЙ РОССИЙСКОЙ АКАДЕМИИ ЛЖЕНАУК}
+
+\begin{flushright}
+На правах рукописи
+\end{flushright}
+
+\vspace{10ex}
+
+\textbf{Темнов Марк Злодеевич}
+
+\vspace{10ex}
+
+\textbf{{\large ИССЛЕДОВАНИЕ ПРОЦЕССОВ ФИЛЬТРАЦИИ СМЕСЕЙ УГЛЕВОДОРОДОВ В ПОРИСТОЙ СРЕДЕ С УЧЕТОМ ФАЗОВЫХ ПЕРЕХОДОВ}}
+
+\vspace{10ex}
+
+Специальность 01.02.05 --- Механика жидкости, газа и плазмы
+
+\vspace{10ex}
+
+Диссертация на соискание ученой степени кандидата физико-математических наук
+
+\vspace{10ex}
+
+\begin{flushright}
+Научный руководитель: 
+
+доктор технических наук, 
+
+Кроликов Е.Б.
+\end{flushright}
+
+\vfill
+
+Москва --- 2017
+
+\end{center}
+
+\newpage
+
+\section{Экспериментальные исследования}
+
+Физическое моделирование описанных процессов проходило на экспериментальной установке <<Пласт>>. Данная установка позволяет моделировать одномерный процесс фильтрации при натурных термобарических условиях: температура --- до $200~^{\circ}C$ , давление --- до $28$~МПа. Схема данной установке указана на рисунке~1.
+
+\subsection{Методика эксперимента}
+ 
+Для начала требуется приготовить модельную смесь такого состава, чтобы при фильтрации через модельный участок смесь проходила через ретроградный участок. Смесь готовится непосредственно в цилиндрах высокого давления. Сначала туда заливается пентан, затем закачивается метан, затем происходит увеличение давления до закритических значений для смеси данного состава при данной температуре. После этого для равномерного распределения смеси между двумя цилиндрами, а так же для перемешивания смеси происходит периодический сброс давления и поднятие его до закритических значений. Процесс перемешивания продолжается полчаса. Затем открывается кран на входе в экспериментальный участок, и смесь с закритическими параметрами заполняет поровое пространство экспериментального участка. Кран на выходе из экспериментального участка держится закрытым, чтобы смесь не перешла в двухфазное состояние раньше времени. После выравнивания давления по длине участка начинаем медленно открывать регуляторы давления на входе в экспериментальный участок и на выходе из него, тем самым добиваясь нужного расхода и перепада давления на участке. После этого начинаем запись данных по давлению и расходу, т.е. регистрируем экспериментальные данные. 
+%\begin{wrapfigure}{c}{0.1\linewidth}
+%	\includegraphics[width=\linewidth]{MADness}
+%\end{wrapfigure}
+
+\newpage
+
+13
+
+\end{document} % конец документа
+
