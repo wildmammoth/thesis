@@ -319,6 +319,67 @@
 \begin{equation}
 	T(V - \nu b)^{\frac{R}{C_v}} = const
 \end{equation}
+
+\newpage
+
+\subsubsection{Более строгий вывод уравнения адиабаты для реального газа}
+
+Вывод взят из книги Н.А. Кириченко "Термодинамика, статическая и молекулярная физика", М.: Физматкнига, 2005 г. В источнике рассматривался газ Ван-дер-Ваальса, я изменил его на газ, который описывается уравнением состояния Пенга--Робинсона. Впрочем, выходит, что отличия минимальны, просто одна из поправок на неидеальность имеют несколько другой вид, в частности, она представляет собой не константу, а функциональную зависимость от температуры и структурных свойств газа.
+
+$$ (V - \nu b) \textrm{ --- объем, разрешенный для движения молекул.}$$
+
+Здесь параметр b учитывает отталкивание молекул. В уравнении Пенга--Робинсона он рассчитывается следующим образом:
+
+$$ b = 0,077796 \frac{R \cdot T_c}{P_c}, $$
+
+где $R$ --- универсальная газовая постоянная, $P_c$ --- критическое давление, $T_c$ --- критическая температура (все эти параметры являются постоянными для конкретного газа). \textbf{[взято из википедии]}
+
+Второй параметр учитывает притяжение молекул друг к другу. Давление газа определяется столкновениями молекул со стенкой. Для неидеального газа силы межмолекулярного взаимодействия стремятся втянуть молекулу, находящуюся рядом со стенкой, внутрь газа, тем самым уменьшая давление газа. Таким образом, давление реального газа будет меньше, чем давление идеального газа при прочих равных условиях:
+
+\begin{gather*}
+	p = \frac{\nu R T}{V - \nu b} - \frac{a(T) \nu^2}{V^2 + 2 b \nu V - b^2 \nu^2}, \\
+	\textrm{где:} \\
+	a(T) = a (T_c) \cdot \alpha(T_r, \omega);\\
+	\alpha = (1 + k \cdot (1 - T_r^{0,5}))^2;\\
+	k = 0,37464 + 1,54226 \cdot \omega - 0,26992 \cdot \omega^2;\\
+	T_r = \frac{T}{T_c};\\
+	a(T_c) = 0,457235 \frac{R^2 \cdot T_c^2}{P_c},
+\end{gather*}
+
+где $\omega$ --- ацентрический фактор, 
+
+Рассмотрим энтропию как функцию температуры и объема,  S = S(T,V):
+
+$$ d S = \left(\frac{\partial S}{\partial T}\right)_V d T + \left(\frac{\partial S}{\partial V}\right)_T d V $$
+
+$$ \left(\frac{\partial S}{\partial T}\right)_V = \left(\frac{\delta Q}{T \partial T}\right)_V = \left(\frac{\partial U}{\partial T}\right)_V = \frac{C_V}{T} $$
+
+$$ \left(\frac{\partial S}{\partial V}\right)_T = \left(\frac{\partial P}{\partial T}\right)_V \textrm{ --- соотношение Максвелла} $$
+
+\begin{gather*}
+\left(\frac{\partial P}{\partial T}\right)_V = \left(\frac{\partial}{\partial T}\left(\frac{\nu R T}{V - \nu b} - \frac{a(T) \nu^2}{V^2 + 2 b \nu V - b^2 \nu^2}\right)\right)_V = \\
+= \frac{\nu R}{V - \nu b} - \frac{\nu^2}{(V + \nu b)^2 - 2 \nu^2 b^2} \left( \frac{\partial( a(T))}{\partial T} \right)_V
+\end{gather*} 
+
+Тогда выражение для дифференциала энтропии можно записать следующим образом:
+
+$$ d S = \frac{C_V}{T} d T + \frac{\nu R}{V - \nu b} d V - \frac{\nu^2}{(V + \nu b)^2 - 2 \nu^2 b^2} \left( \frac{\partial( a(T))}{\partial T} \right)_V d V $$
+
+Распишем производную в последнем слагаемом:
+
+$$ \frac{\partial a}{\partial T} = \frac{\partial}{\partial T} \left( A \left(1 + k \left(1 - \left( \frac{T}{T_c} \right)^{-0,5}\right)\right)^2 \right) = $$
+
+$$ = 2 A \left(1 + k \left(1 - \left( \frac{T}{T_c} \right)^{-0,5}\right)\right) \left( (- k) 0,5 \left( \frac{T}{T_c} \right)^{-0,5}  \right) = $$
+
+$$ k^2 - A k \left( \frac{T_c}{T} \right)^{0,5} - A k^2 \left( \frac{T_c}{T} \right)^{0,5} $$
+
+Подставим последнее выражение в формулу для дифференциала энтропии:
+
+$$ d S = C_V \frac{d T}{T} + \nu R \frac{d V}{V - \nu b} - \nu^2 k^2 \frac{d V}{(V - \nu b)^2 - 2 \nu^2 b^2} +  $$
+
+$$ + \frac{\nu^2 A k T_c^{0,5}(1 + k)}{T} \frac{d V}{(V - \nu b)^2 - 2 \nu^2 b^2} = 0 $$
+
+Как решать данное уравнение, я пока что не представляю.
 %\begin{wrapfigure}{c}{0.1\linewidth}
 %	\includegraphics[width=\linewidth]{MADness}
 %\end{wrapfigure}
