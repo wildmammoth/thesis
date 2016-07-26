@@ -352,7 +352,7 @@ $$ b = 0,077796 \frac{R \cdot T_c}{P_c}, $$
 
 $$ d S = \left(\frac{\partial S}{\partial T}\right)_V d T + \left(\frac{\partial S}{\partial V}\right)_T d V $$
 
-$$ \left(\frac{\partial S}{\partial T}\right)_V = \left(\frac{\delta Q}{T \partial T}\right)_V = \left(\frac{\partial U}{\partial T}\right)_V = \frac{C_V}{T} $$
+$$ \left(\frac{\partial S}{\partial T}\right)_V = \left(\frac{\delta Q}{T \partial T}\right)_V = \left(\frac{\partial U}{\partial T}\right)_V = \frac{\nu C_V}{T} $$
 
 $$ \left(\frac{\partial S}{\partial V}\right)_T = \left(\frac{\partial P}{\partial T}\right)_V \textrm{ --- соотношение Максвелла} $$
 
@@ -363,7 +363,7 @@ $$ \left(\frac{\partial S}{\partial V}\right)_T = \left(\frac{\partial P}{\parti
 
 Тогда выражение для дифференциала энтропии можно записать следующим образом:
 
-$$ d S = \frac{C_V}{T} d T + \frac{\nu R}{V - \nu b} d V - \frac{\nu^2}{(V + \nu b)^2 - 2 \nu^2 b^2} \left( \frac{\partial( a(T))}{\partial T} \right)_V d V $$
+$$ d S = \frac{\nu C_V}{T} d T + \frac{\nu R}{V - \nu b} d V - \frac{\nu^2}{(V + \nu b)^2 - 2 \nu^2 b^2} \left( \frac{\partial( a(T))}{\partial T} \right)_V d V $$
 
 Распишем производную в последнем слагаемом:
 
@@ -375,11 +375,21 @@ $$ k^2 - A k \left( \frac{T_c}{T} \right)^{0,5} - A k^2 \left( \frac{T_c}{T} \ri
 
 Подставим последнее выражение в формулу для дифференциала энтропии:
 
-$$ d S = C_V \frac{d T}{T} + \nu R \frac{d V}{V - \nu b} - \nu^2 k^2 \frac{d V}{(V - \nu b)^2 - 2 \nu^2 b^2} +  $$
+$$ d S = \nu C_V \frac{d T}{T} + \nu R \frac{d V}{V - \nu b} - \nu^2 k^2 \frac{d V}{(V - \nu b)^2 - 2 \nu^2 b^2} +  $$
 
-$$ + \frac{\nu^2 A k T_c^{0,5}(1 + k)}{T} \frac{d V}{(V - \nu b)^2 - 2 \nu^2 b^2} = 0 $$
+$$ + \frac{\nu^2 A k T_c^{0,5}(1 + k)}{T^{0,5}} \frac{d V}{(V - \nu b)^2 - 2 \nu^2 b^2} = 0 $$
 
-Как решать данное уравнение, я пока что не представляю.
+Как решать данное уравнение, я пока что не представляю. 
+
+Сегодня прикинул в табличном процессоре, что из себя представляет функция a(T). На промежутке от 200..350 К --- это монотонно убывающая функция, близкая к линейной: максимальное отклонение от линейной --- 1,46\%, а если взять функцию наименьших квадратов, и уменьшить диапазон температур, то ошибка станет еще меньше. Таким образом, при нахождении $ \frac{\partial a}{\partial T} $ получится константа, тогда дифференциальное уравнение примет вид дифференциального уравнения с разделяющимися переменными, которое элементарно решается:
+
+$$ d S = \frac{\nu C_V}{T} d T + \frac{\nu R}{V - \nu b} d V - \frac{A_1 \nu^2}{(V + \nu b)^2 - 2 \nu^2 b^2} d V = 0 $$
+
+$$ \nu C_v ln (T) + \nu R \cdot ln (V - \nu b) + \frac{A_1 \nu^2 }{ \sqrt{2} \nu b } ln \left( \frac{ V + \nu b - \sqrt{2} \nu b }{ V + \nu b + \sqrt{2} \nu b } \right) = const $$
+
+$$ ln (T) + \frac{R}{C_V} \cdot ln (V - \nu b) + \frac{A_1 \nu }{ C_V \sqrt{2} \nu b } ln \left( \frac{ V + \nu b - \sqrt{2} \nu b }{ V + \nu b + \sqrt{2} \nu b } \right) = const $$ 
+
+$$ T (V - \nu b)^{\frac{R}{C_V}} \left(  \frac{ V + \nu b - \sqrt{2} \nu b }{ V + \nu b + \sqrt{2} \nu b } \right) ^ { \frac{A_1 \nu }{ C_V \sqrt{2} \nu b } } = const $$
 %\begin{wrapfigure}{c}{0.1\linewidth}
 %	\includegraphics[width=\linewidth]{MADness}
 %\end{wrapfigure}
